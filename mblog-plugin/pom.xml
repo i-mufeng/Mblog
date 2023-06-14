@@ -10,11 +10,12 @@
     </parent>
 
     <artifactId>mblog-plugin</artifactId>
+    <packaging>pom</packaging>
+    <description>插件模块</description>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <modules>
+        <module>mblog-plugin-blog</module>
+        <module>mblog-plugin-gen</module>
+    </modules>
 
 </project>

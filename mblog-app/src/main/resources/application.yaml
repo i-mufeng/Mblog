@@ -1,0 +1,84 @@
+server:
+  port: 80
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mblog-test?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true&useInformationSchema=true
+    username: root
+    password: root
+    druid:
+      stat-view-servlet:
+        enabled: true
+        login-password: 123456
+        login-username: admin
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 6000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query-timeout: 2000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      filters: stat
+      break-after-acquire-failure: false
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    locale: zh_CN
+  data:
+    redis:
+      database: 1
+      host: 127.0.0.1
+      port: 6379
+      password:
+      timeout: 10s
+      lettuce:
+        pool:
+          max-active: 200
+          max-wait: -1ms
+          max-idle: 10
+          min-idle: 0
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    jdbc-type-for-null: null
+  global-config:
+    banner: false
+  mapper-locations: classpath*:cn/imufeng/**/mapping/*.xml
+
+sa-token:
+  token-name: token
+  timeout: 2592000
+  activity-timeout: -1
+  is-concurrent: true
+  is-share: false
+  max-login-count: -1
+  token-style: random-32
+  is-log: false
+  is-print: false
+  
+knife4j:
+  enable: true
+  production: false
+  setting:
+    enableOpenApi: false
+    enableSwaggerModels: false
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: Apache License 2.0 | Copyright 2021-[MBlog](https://www.imufeng.cn)
+
+
+logging:
+  level:
+    root: info
